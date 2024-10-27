@@ -6,4 +6,7 @@ steps:
   args: ['push', 'gcr.io/$PROJECT_ID/add-numbers-backend:$SHORT_SHA']
 
 - name: 'gcr.io/cloud-builders/kubectl'
+  args: ['apply', '-f', 'kubernetes-resource-file.yaml']
+
+- name: 'gcr.io/cloud-builders/kubectl'
   args: ['set', 'image', 'deployment/backend-deployment', 'backend=gcr.io/$PROJECT_ID/add-numbers-backend:$SHORT_SHA']

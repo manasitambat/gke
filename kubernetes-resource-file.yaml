@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: add-numbers-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: add-numbers-backend
+  template:
+    metadata:
+      labels:
+        app: add-numbers-backend
+    spec:
+      containers:
+      - name: add-numbers-backend
+        image: gcr.io/$PROJECT_ID/add-numbers-backend:$SHORT_SHA
+        ports:
+        - containerPort: 5000
